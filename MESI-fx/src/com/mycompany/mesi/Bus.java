@@ -1,4 +1,3 @@
-
 package com.mycompany.mesi;
 import java.util.ArrayList;
 
@@ -52,4 +51,3 @@ class Bus {
     }
 
 }
-

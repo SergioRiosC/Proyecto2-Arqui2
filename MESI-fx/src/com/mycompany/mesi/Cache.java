@@ -1,4 +1,3 @@
-
 package com.mycompany.mesi;
 import java.util.HashMap;
 
@@ -51,5 +50,3 @@ class Cache {
         return cacheLines.get(i);
     }
 }
-
-

@@ -38,4 +38,3 @@ class CacheLine {
         this.state = state;
     }
 }
-

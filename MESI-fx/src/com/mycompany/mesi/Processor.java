@@ -1,5 +1,5 @@
-
 package com.mycompany.mesi;
+
 class Processor implements Runnable {
     private int id;
     private Cache cache;
@@ -100,7 +100,3 @@ class Processor implements Runnable {
     }
     
 }
-
-
-
-

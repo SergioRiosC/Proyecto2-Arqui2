@@ -1,4 +1,3 @@
-
 package com.mycompany.mesi;
 import java.util.HashMap;
 
@@ -17,5 +16,3 @@ class Memory {
         memory.put(address, data);
     }
 }
-
-

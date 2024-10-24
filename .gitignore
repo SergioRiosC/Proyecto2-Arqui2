@@ -17,3 +17,14 @@
 *.rar
 
 hs_err_pid*
+
+
+# MESI-fx @ Netbeans
+
+MESI-fx/nbproject/private/
+MESI-fx/build/
+MESI-fx/nbbuild/
+MESI-fx/dist/
+MESI-fx/nbdist/
+MESI-fx/nbactions.xml
+MESI-fx/nb-configuration.xml
