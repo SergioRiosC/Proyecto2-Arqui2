@@ -1,18 +1,22 @@
-package com.mycompany.mesi;
+package com.mycompany.mesi.Processor;
 
-class Processor implements Runnable {
+import com.mycompany.mesi.Bus.pBus;
+import com.mycompany.mesi.Processor.Cache.*;
+import com.mycompany.mesi.MESI;
+
+public class pProcessor implements Runnable {
     private int id;
-    private Cache cache;
-    private Bus bus;
+    private pCache cache;
+    private pBus bus;
     private long[] registers; // 4 registros de 64 bits (REG0, REG1, REG2, REG3)
     private boolean running = true;
     private int programCounter = 0; // Para manejar las instrucciones secuenciales
     private String[] instructions;  // Instrucciones del programa cargadas.
     private MESI app;  // Referencia a la app gráfica
 
-    public Processor(int id, Bus bus, String[] instructions, MESI app) {
+    public pProcessor(int id, pBus bus, String[] instructions, MESI app) {
         this.id = id;
-        this.cache = new Cache();
+        this.cache = new pCache();
         this.bus = bus;
         this.registers = new long[4]; // Inicializa 4 registros de 64 bits
         this.instructions = instructions;
@@ -65,15 +69,15 @@ class Processor implements Runnable {
     }
 
     public void load(int reg, int address) {
-        CacheLine line = cache.read(address, bus, this);
-        registers[reg] = line.getData();
+        //CacheLine line = cache.read(address, bus, this);
+        //registers[reg] = line.getData();
         System.out.println("Processor " + this.id + " loaded " + registers[reg] + " into REG" + reg);
         app.log("Processor " + this.id + " loaded " + registers[reg] + " into REG" + reg);
     }
 
     public void store(int reg, int address) {
         long data = registers[reg];  // Obtiene el valor del registro
-        cache.write(address, data, bus, this);
+        //cache.write(address, data, bus, this);
         System.out.println("Processor " + id + " stored " + data + " from REG" + reg + " to address " + address);
         app.log("Processor " + id + " stored " + data + " from REG" + reg + " to address " + address);
     }
@@ -95,7 +99,7 @@ class Processor implements Runnable {
     }
     
     
-    public Cache getCache() {
+    public pCache getCache() {
         return cache;
     }
     

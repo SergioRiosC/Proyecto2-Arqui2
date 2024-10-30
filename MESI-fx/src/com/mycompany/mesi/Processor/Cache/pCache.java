@@ -1,16 +1,20 @@
-package com.mycompany.mesi;
+package com.mycompany.mesi.Processor.Cache;
+
+import com.mycompany.mesi.Bus.Bus;
+import com.mycompany.mesi.Processor.Processor;
 import java.util.HashMap;
 
-class Cache {
+public class pCache {
     private HashMap<Integer, CacheLine> cacheLines;
     private int cacheSize = 8; // 8 bloques de 32 bytes como mínimo.
 
-    public Cache() {
+    public pCache() {
         cacheLines = new HashMap<>();
     }
 
     public CacheLine read(int address, Bus bus, Processor processor) {
         CacheLine line = cacheLines.get(address);
+        
         if (line == null || line.getState() == MESIState.INVALID) {
             line = bus.readFromMemory(address, processor);
             cacheLines.put(address, line);

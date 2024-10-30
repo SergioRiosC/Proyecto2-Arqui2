@@ -1,21 +1,26 @@
-package com.mycompany.mesi;
+package com.mycompany.mesi.Bus;
+
+import com.mycompany.mesi.Memory.Memory;
+import com.mycompany.mesi.Processor.Cache.MESIState;
+import com.mycompany.mesi.Processor.Cache.CacheLine;
+import com.mycompany.mesi.Processor.pProcessor;
 import java.util.ArrayList;
 
-class Bus {
-    private ArrayList<Processor> processors;
+public class pBus {
+    private ArrayList<pProcessor> processors;
     private Memory memory;
 
-    public Bus(Memory memory) {
+    public pBus(Memory memory) {
         processors = new ArrayList<>();
         this.memory = memory;
     }
 
-    public void addProcessor(Processor processor) {
+    public void addProcessor(pProcessor processor) {
         processors.add(processor);
     }
 
-    public CacheLine readFromMemory(int address, Processor requester) {
-        for (Processor p : processors) {
+    public CacheLine readFromMemory(int address, pProcessor requester) {
+        for (pProcessor p : processors) {
             if (p != requester) {
                 CacheLine line = p.getCache().getCacheLine(address);
                 if (line != null && line.getState() == MESIState.MODIFIED) {
@@ -28,8 +33,8 @@ class Bus {
         return new CacheLine(address, data);
     }
 
-    public void invalidateOtherCaches(int address, Processor requester) {
-        for (Processor p : processors) {
+    public void invalidateOtherCaches(int address, pProcessor requester) {
+        for (pProcessor p : processors) {
             if (p != requester) {
                 CacheLine line = p.getCache().getCacheLine(address);
                 if (line != null) {
@@ -38,8 +43,8 @@ class Bus {
             }
         }
     }
-    public boolean isExclusive(int address, Processor requester) {
-    for (Processor p : processors) {
+    public boolean isExclusive(int address, pProcessor requester) {
+    for (pProcessor p : processors) {
         if (p != requester) {
             CacheLine line = p.getCache().getCacheLine(address);
             if (line != null && line.getState() != MESIState.INVALID) {

@@ -1,5 +1,8 @@
 package com.mycompany.mesi;
 
+import com.mycompany.mesi.Memory.Memory;
+import com.mycompany.mesi.Bus.pBus;
+import com.mycompany.mesi.Processor.pProcessor;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -44,7 +47,7 @@ public class MESI extends Application {
 
     private void startSimulation() {
         Memory memory = new Memory();
-        Bus bus = new Bus(memory);
+        pBus bus = new pBus(memory);
 
         // Instrucciones de prueba para cada procesador
         String[] instructionsP1 = {
@@ -74,10 +77,10 @@ public class MESI extends Application {
         };
 
         // Crear los 4 procesadores
-        Processor p1 = new Processor(1, bus, instructionsP1, this);
-        Processor p2 = new Processor(2, bus, instructionsP2, this);
-        Processor p3 = new Processor(3, bus, instructionsP3, this);
-        Processor p4 = new Processor(4, bus, instructionsP4, this);
+        pProcessor p1 = new pProcessor(1, bus, instructionsP1, this);
+        pProcessor p2 = new pProcessor(2, bus, instructionsP2, this);
+        pProcessor p3 = new pProcessor(3, bus, instructionsP3, this);
+        pProcessor p4 = new pProcessor(4, bus, instructionsP4, this);
 
         bus.addProcessor(p1);
         bus.addProcessor(p2);
