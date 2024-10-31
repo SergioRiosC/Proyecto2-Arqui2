@@ -10,7 +10,7 @@ import com.mycompany.mesi.Processor.InstructionMemory.InstructionMemory;
  * The processor can execute basic instructions (LOAD, STORE, INC, DEC, JNZ) 
  * and interacts with a shared bus and instruction memory.
  */
-public class Processor {
+public class Processor implements Runnable{
     private final int id; // Processor ID
     private final RegisterSet registerSet; // Set of registers
     private final InstructionMemory instructionMemory; // Memory holding instructions for the processor
@@ -193,6 +193,13 @@ public class Processor {
      */
     public boolean isRunning() {
         return running;
+    }
+
+    @Override
+    public void run() {
+        while (running && programCounter < instructionMemory.getMaxSize()) {
+            executeNextInstruction();
+        }
     }
     
 }

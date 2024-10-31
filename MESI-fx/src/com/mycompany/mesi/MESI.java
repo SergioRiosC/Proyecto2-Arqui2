@@ -1,7 +1,11 @@
 package com.mycompany.mesi;
 
+import com.mycompany.mesi.Bus.Bus;
 import com.mycompany.mesi.Memory.Memory;
 import com.mycompany.mesi.Bus.pBus;
+import com.mycompany.mesi.Processor.InstructionMemory.InstructionMemory;
+import com.mycompany.mesi.Processor.Processor;
+import com.mycompany.mesi.Processor.Register.RegisterSet;
 import com.mycompany.mesi.Processor.pProcessor;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -47,15 +51,14 @@ public class MESI extends Application {
 
     private void startSimulation() {
         Memory memory = new Memory();
-        pBus bus = new pBus(memory);
+        //pBus bus = new pBus(memory);
+        Bus bus = new Bus(memory);
 
         // Instrucciones de prueba para cada procesador
-        String[] instructionsP1 = {
-            "LOAD REG0 100", 
-            "INC REG0", 
-            "STORE REG0 100",
-            "JNZ 0" // Salta si REG0 != 0
-        };
+        String instructionsP1 = "LOAD REG0 100;\n" +
+            "INC REG0;\n" +
+            "STORE REG0 100;\n" +
+            "JNZ 0;";
 
         String[] instructionsP2 = {
             "LOAD REG1 100",
@@ -77,10 +80,19 @@ public class MESI extends Application {
         };
 
         // Crear los 4 procesadores
-        pProcessor p1 = new pProcessor(1, bus, instructionsP1, this);
+        /*pProcessor p1 = new pProcessor(1, bus, instructionsP1, this);
         pProcessor p2 = new pProcessor(2, bus, instructionsP2, this);
         pProcessor p3 = new pProcessor(3, bus, instructionsP3, this);
-        pProcessor p4 = new pProcessor(4, bus, instructionsP4, this);
+        pProcessor p4 = new pProcessor(4, bus, instructionsP4, this);*/
+        InstructionMemory instMem= new InstructionMemory(10);
+        instMem.loadInstructions(instructionsP1);
+        RegisterSet regSet= new RegisterSet();
+        
+        Processor p1 = new Processor(1, bus, instMem, regSet);
+        Processor p2 = new Processor(2, bus, instMem, regSet);
+        Processor p3 = new Processor(3, bus, instMem, regSet);
+        Processor p4 = new Processor(4, bus, instMem, regSet);
+        
 
         bus.addProcessor(p1);
         bus.addProcessor(p2);
