@@ -28,8 +28,4 @@ public class CacheLine {
     public boolean isValid() {
         return !state.equals(MESIProtocol.INVALID);
     }
-
-    public boolean isWritable() {
-        return state.equals(MESIProtocol.MODIFIED) || state.equals(MESIProtocol.EXCLUSIVE);
-    }
 }

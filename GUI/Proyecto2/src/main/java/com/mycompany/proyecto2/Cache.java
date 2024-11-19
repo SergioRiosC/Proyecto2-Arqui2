@@ -1,5 +1,7 @@
 package com.mycompany.proyecto2;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,12 +55,32 @@ public class Cache {
     }
 
     public boolean hasLine(int address) {
-        return cacheLines.containsKey(address) && cacheLines.get(address).isValid();
+        if (cacheLines.containsKey(address)) {
+            CacheLine line = cacheLines.get(address);
+            return line.isValid(); // Línea válida si su estado no es INVALID
+        }
+        return false;
     }
 
     public void invalidateLine(int address) {
         if (cacheLines.containsKey(address)) {
-            cacheLines.get(address).setState(MESIProtocol.INVALID);
+            CacheLine line = cacheLines.get(address);
+            line.setState(MESIProtocol.INVALID); // Cambiar estado a INVALID
         }
     }
+
+    public JSONArray getCacheStateAsJson() {
+        JSONArray cacheArray = new JSONArray();
+
+        for (Map.Entry<Integer, CacheLine> entry : cacheLines.entrySet()) {
+            JSONObject lineJson = new JSONObject();
+            lineJson.put("address", entry.getKey());
+            lineJson.put("state", entry.getValue().getState());
+            lineJson.put("data", entry.getValue().getData());
+            cacheArray.put(lineJson);
+        }
+
+        return cacheArray;
+    }
 }
+

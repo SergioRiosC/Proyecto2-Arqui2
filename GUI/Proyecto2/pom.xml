@@ -10,4 +10,12 @@
         <maven.compiler.release>18</maven.compiler.release>
         <exec.mainClass>com.mycompany.proyecto2.Proyecto2</exec.mainClass>
     </properties>
+    <dependencies>
+    <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20230618</version> <!-- Puedes usar la última versión disponible -->
+    </dependency>
+</dependencies>
+
 </project>
