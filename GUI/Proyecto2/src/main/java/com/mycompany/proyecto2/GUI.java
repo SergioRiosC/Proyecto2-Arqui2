@@ -20,15 +20,19 @@ public class GUI extends javax.swing.JFrame {
     private JLabel busLabel;
     private JTextArea logArea;
     private JButton startButton, stepButton, resetButton;
+    private Llamada llamada;
     
     public GUI() {
         initComponents();
-        customizeComponents(); 
+        customizeComponents();
+        llamada = new Llamada();
     }
     
     
     private void customizeComponents() {
-        
+        // Crear y configurar los componentes
+
+
         // Crear paneles de procesadores
         processorPanel1 = createProcessorPanel("Procesador 1");
         processorPanel2 = createProcessorPanel("Procesador 2");
@@ -90,7 +94,8 @@ public class GUI extends javax.swing.JFrame {
      private void startSimulation(ActionEvent e) {
         logArea.append("Iniciando simulación...\n");
         busLabel.setText("Bus: Procesando...");
-        // Aquí va la lógica de simulación
+        llamada.iniciar();
+         logArea.append("Modificado...\n");
     }
 
     /**

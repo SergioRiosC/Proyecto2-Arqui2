@@ -5,10 +5,17 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Llamada {
-    public static void main(String[] args) {
+    private static int numProcessors;
+    private static int memorySize;
+
+
+    public Llamada() {
+        numProcessors = 4;
+        memorySize = 256;
+    }
+
+    public void iniciar() {
         // Valores predeterminados (por si el archivo config.txt no los tiene)
-        int numProcessors = 4;
-        int memorySize = 256;
 
         // Leer configuración desde el archivo
         try (BufferedReader br = new BufferedReader(new FileReader("./GUI/Proyecto2/src/main/java/com/mycompany/proyecto2/config/config.txt"))) {
@@ -35,7 +42,7 @@ public class Llamada {
         } catch (IOException e) {
             System.err.println("Error leyendo el archivo config.txt: " + e.getMessage());
         }
-
+        System.out.println("Configuración cargada: numProcessors=" + numProcessors + ", memorySize=" + memorySize);
         // Crear memoria compartida
         Memory sharedMemory = new Memory(memorySize);
 

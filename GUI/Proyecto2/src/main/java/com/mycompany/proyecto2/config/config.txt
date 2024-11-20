@@ -1,2 +1,2 @@
-numProcessors=8
+numProcessors=4
 memorySize=1024
