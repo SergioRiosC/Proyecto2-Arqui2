@@ -1,0 +1,129 @@
+{
+    "processors": [
+        {
+            "cache": [
+                {
+                    "address": 100,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 500,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 300,
+                    "data": 0,
+                    "state": "I"
+                }
+            ],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 0
+        },
+        {
+            "cache": [
+                {
+                    "address": 320,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 120,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 520,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 140,
+                    "data": 0,
+                    "state": "I"
+                }
+            ],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 1
+        },
+        {
+            "cache": [
+                {
+                    "address": 400,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 200,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 600,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 300,
+                    "data": 0,
+                    "state": "S"
+                }
+            ],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 2
+        },
+        {
+            "cache": [
+                {
+                    "address": 420,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 220,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 140,
+                    "data": 0,
+                    "state": "M"
+                }
+            ],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 3
+        }
+    ],
+    "bus_stats": {
+        "data_transmitted": {
+            "PE_1": 128,
+            "PE_0": 96,
+            "PE_3": 96,
+            "PE_2": 96
+        },
+        "invalidations": 2,
+        "read_requests": 7,
+        "write_requests": 7
+    }
+}

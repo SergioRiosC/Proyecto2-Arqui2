@@ -1,0 +1,169 @@
+{
+    "processors": [
+        {
+            "cache": [
+                {
+                    "address": 100,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 500,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 120,
+                    "data": 0,
+                    "state": "S"
+                },
+                {
+                    "address": 300,
+                    "data": 0,
+                    "state": "I"
+                },
+                {
+                    "address": 700,
+                    "data": 0,
+                    "state": "E"
+                }
+            ],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 0
+        },
+        {
+            "cache": [
+                {
+                    "address": 320,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 720,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 120,
+                    "data": 0,
+                    "state": "I"
+                },
+                {
+                    "address": 520,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 200,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 140,
+                    "data": 0,
+                    "state": "I"
+                }
+            ],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 1
+        },
+        {
+            "cache": [
+                {
+                    "address": 400,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 800,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 200,
+                    "data": 0,
+                    "state": "I"
+                },
+                {
+                    "address": 600,
+                    "data": 0,
+                    "state": "E"
+                },
+                {
+                    "address": 300,
+                    "data": 0,
+                    "state": "I"
+                },
+                {
+                    "address": 140,
+                    "data": 0,
+                    "state": "S"
+                }
+            ],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 2
+        },
+        {
+            "cache": [
+                {
+                    "address": 420,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 220,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 140,
+                    "data": 0,
+                    "state": "I"
+                },
+                {
+                    "address": 620,
+                    "data": 0,
+                    "state": "M"
+                },
+                {
+                    "address": 300,
+                    "data": 0,
+                    "state": "M"
+                }
+            ],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 3
+        }
+    ],
+    "bus_stats": {
+        "data_transmitted": {
+            "PE_1": 192,
+            "PE_0": 128,
+            "PE_3": 160,
+            "PE_2": 128
+        },
+        "invalidations": 6,
+        "read_requests": 11,
+        "write_requests": 11
+    }
+}

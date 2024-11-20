@@ -3,16 +3,15 @@ package com.mycompany.proyecto2;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.*;
 import java.util.Map;
 
 public class Simulation {
     private Processor[] processors;
     private Memory memory;
     private Bus bus;
+    private int stepCounter = 0; // Contador para los pasos
 
     public Simulation(Processor[] processors, Memory memory, Bus bus) {
         this.processors = processors;
@@ -20,7 +19,11 @@ public class Simulation {
         this.bus = bus;
     }
 
+    // Método principal de la simulación
     public void run() {
+        // Limpiar el directorio de resultados antes de comenzar
+        clearResultsDirectory("./GUI/Proyecto2/src/main/java/com/mycompany/proyecto2/resultados");
+
         try (BufferedReader reader = new BufferedReader(new FileReader("./GUI/Proyecto2/src/main/java/com/mycompany/proyecto2/config/input.txt"))) {
             String line;
             int instructionIndex = 0;
@@ -43,6 +46,10 @@ public class Simulation {
                     instructionIndex = e.getTargetInstructionIndex();
                     continue;
                 }
+
+                // Generar archivo JSON después de cada paso
+                generateStepOutput("./GUI/Proyecto2/src/main/java/com/mycompany/proyecto2/resultados/resultados" + (++stepCounter) + ".json");
+
                 instructionIndex++;
             }
         } catch (IOException e) {
@@ -50,8 +57,21 @@ public class Simulation {
         }
     }
 
+    // Limpiar el directorio de resultados al inicio
+    private void clearResultsDirectory(String directoryPath) {
+        try {
+            Files.walk(Paths.get(directoryPath))
+                    .filter(Files::isRegularFile)
+                    .map(Path::toFile)
+                    .forEach(File::delete);
+            System.out.println("Directorio de resultados limpiado.");
+        } catch (IOException e) {
+            System.err.println("Error limpiando el directorio de resultados: " + e.getMessage());
+        }
+    }
 
-    public void generateOutput(String filename) {
+    // Generar archivo JSON para cada paso
+    private void generateStepOutput(String filename) {
         try (FileWriter file = new FileWriter(filename)) {
             JSONObject output = new JSONObject();
 
@@ -80,7 +100,7 @@ public class Simulation {
 
             // Escribir archivo JSON
             file.write(output.toString(4)); // Formato legible
-            System.out.println("JSON generado en: " + filename);
+            System.out.println("Archivo generado: " + filename);
         } catch (IOException e) {
             e.printStackTrace();
         }

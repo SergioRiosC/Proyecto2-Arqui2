@@ -8,15 +8,12 @@ public class Llamada {
     private static int numProcessors;
     private static int memorySize;
 
-
     public Llamada() {
-        numProcessors = 4;
-        memorySize = 256;
+        numProcessors = 4; // Valores predeterminados
+        memorySize = 256;  // Valores predeterminados
     }
 
     public void iniciar() {
-        // Valores predeterminados (por si el archivo config.txt no los tiene)
-
         // Leer configuración desde el archivo
         try (BufferedReader br = new BufferedReader(new FileReader("./GUI/Proyecto2/src/main/java/com/mycompany/proyecto2/config/config.txt"))) {
             String line;
@@ -42,7 +39,9 @@ public class Llamada {
         } catch (IOException e) {
             System.err.println("Error leyendo el archivo config.txt: " + e.getMessage());
         }
+
         System.out.println("Configuración cargada: numProcessors=" + numProcessors + ", memorySize=" + memorySize);
+
         // Crear memoria compartida
         Memory sharedMemory = new Memory(memorySize);
 
@@ -64,7 +63,7 @@ public class Llamada {
         Simulation simulation = new Simulation(processors, sharedMemory, bus);
         simulation.run();
 
-        // Generar archivo de salida
-        simulation.generateOutput("./GUI/Proyecto2/src/main/java/com/mycompany/proyecto2/resultados/resultados.json");
+        // Finalización de la simulación
+        System.out.println("Simulación completada. Archivos JSON generados en cada paso.");
     }
 }
