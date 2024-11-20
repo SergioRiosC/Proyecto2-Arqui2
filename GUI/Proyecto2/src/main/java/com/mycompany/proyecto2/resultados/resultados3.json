@@ -1,0 +1,67 @@
+{
+    "processors": [
+        {
+            "cache": [{
+                "address": 100,
+                "data": 0,
+                "state": "E"
+            }],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 0
+        },
+        {
+            "cache": [{
+                "address": 120,
+                "data": 0,
+                "state": "M"
+            }],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 1
+        },
+        {
+            "cache": [{
+                "address": 200,
+                "data": 0,
+                "state": "E"
+            }],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 2
+        },
+        {
+            "cache": [],
+            "registers": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "id": 3
+        }
+    ],
+    "bus_stats": {
+        "data_transmitted": {
+            "PE_1": 32,
+            "PE_0": 32,
+            "PE_3": 0,
+            "PE_2": 32
+        },
+        "invalidations": 0,
+        "read_requests": 2,
+        "write_requests": 1
+    }
+}

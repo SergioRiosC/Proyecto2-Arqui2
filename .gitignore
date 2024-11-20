@@ -17,3 +17,5 @@
 *.rar
 
 hs_err_pid*
+/NewFolder/PROYECTO2/nbproject/private/
+/GUI/Proyecto2/target/
